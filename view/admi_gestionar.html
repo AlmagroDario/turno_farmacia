@@ -1,0 +1,226 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script><link href=".7css7index.css" >
+      
+        <link href="../css/user_turno.css"  rel="stylesheet">
+
+        <script>
+                (function() {
+                 'use strict';
+                 window.addEventListener('load', function() {
+
+                 var forms = document.getElementsByClassName('needs-validation');
+                 var validation = Array.prototype.filter.call(forms, function(form) {
+                 form.addEventListener('submit', function(event) {
+                 if (form.checkValidity() === false) {
+                 event.preventDefault();
+                 event.stopPropagation();
+                 }else{
+                    let obj2 =obj.campo.filter(r=>{
+                          if(form[0].value == r.cedula  ){
+                            r.fecha=form[1].value;
+                            r.fechac=form[2].value;
+                            var d = new Date(form[1].value);
+                            d.setDate(d.getDate() +1);
+                            r.fechat=d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear()
+                            return r
+                          }else{
+                              return r 
+                          }
+                      })
+                      var Table = document.getElementById("mTableBody");
+                       Table.innerHTML = ""
+                       obj.campo=[];
+                       obj.campo=obj2;
+                       rellenarTabla(obj);
+        
+                 }
+                 form.classList.add('was-validated');
+                 }, false);
+                 });
+                 }, false);
+                })();
+           </script>
+    </head>
+
+    <body>
+            <div class="sidenav">
+                    <div class="vertical-menu">
+                            <a href="./admi_consultar.html" >Consultar Turnos</a>
+                            <a href="#" class="active" >Gestionar Turnos</a>
+                            <a href="../index.html" >Salir</a>
+
+                     </div>
+            </div>
+            <div class="main">
+                    <nav class="navbar navbar-light bg-light">
+                            <span class="navbar-brand mb-0 h1">Gestionar Turnos</span>
+                    </nav>
+                    <div align="center" style="margin-top:5%;">
+                            
+                            <table  style="width: 80%;" border="1">
+                                    <thead class="tituloCrear2b">
+                                        <tr>
+                                            <th class="borderi tr" id="fecha">Cedula</th>
+                                            <th id="hora" class="tr" >Correo</th>
+                                            <th class=" tr" id="fecha">Fecha</th>
+                                            <th id="hora" class="tr" >Hora</th>
+                                            <th class=" tr" id="detalle">Estado</th>  
+                                            <th class=" tr" id="" >Detalle</th>  	
+                                            <th class=" tr" id="">Editar</th>  
+                                            <th class="borderi tr" id="detalle">Aprobar</th> 
+                                            <th class="borderi tr" id="detalle">Rechazar</th> 		     
+                                        </tr>
+                                    </thead>
+                                    <style>
+                                        .ss{
+                                            text-align: center;
+                                        }
+                                    </style>
+                                    <tbody id="mTableBody" class="ss"     >
+        
+                                    </tbody>
+                             </table>     
+
+                              
+                                    <form class="needs-validation form1"  target="frame" novalidate>
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-2 col-form-label">Cedula</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="Cedula" disabled placeholder="Cedula" required>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label for="inputFecha3" class="col-sm-2 col-form-label">Fecha</label>
+                                                <div class="col-sm-10">
+                                                        <input type="date" class="form-control"   id="Fecha" required>
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                        Porfavor seleccione una fecha valida .
+                                                </div>
+                                                   
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                    <label for="inputHora3" class="col-sm-2 col-form-label">Hora</label>
+                                                    <div class="col-sm-10">
+                                                            <input type="time" class="form-control" id="Hora"  min="09:00" max="21:00"    required>
+                                                    </div>
+                                                    <div class="invalid-tooltip">
+                                                            Porfavor seleccione una hora valida 9:00-21:00 .
+                                                    </div>
+                                                       
+                                            </div>
+        
+                                        <button class="btn btn-black" type="submit">Solicitar</button>
+                                    </form>
+        
+                            
+                            <iframe name="frame" style="display:none;"></iframe>
+  
+                    </div>  
+            </div>
+    </body>
+    <script>
+             let obj = {
+              campo: [
+         {
+             anotacion: "En espera",
+             fechat: "23/07/2020",
+             fechac: "09:00",
+             resultado: "detalle 2",
+             correo: "user@gmail.com",
+             resultado: "detalle 2",
+             cedula:"1234567891",
+             fecha:"2020-07-23"
+         },
+         {
+             anotacion: "En espera",
+             fechat: "24/07/2020",
+             fechac: "10:00",
+             resultado: "detalle 1",
+             correo: "user2@gmail.com",
+             cedula:"1234567890",
+             fecha:"2020-07-24"
+         },
+         {
+             anotacion: "En espera",
+             fechat: "25/07/2020",
+             correo: "user3@gmail.com",
+             fechac: "10:00",
+             resultado: "detalle 1",
+             cedula:"1234567892",
+             fecha:"2020-07-25"
+         }
+     ]
+            }
+ 
+ function rellenarTabla(obj) { 
+   let tbody = document.getElementById('mTableBody');
+   obj.campo.forEach((c) => { 
+       let filaNueva = '<tr>' +
+                         '<td>' + c.cedula + '</td>' +
+                         '<td>' + c.correo  + '</td>' +
+                         '<td>' + c.fechat + '</td>' +
+                         '<td>' + c.fechac + '</td>' +
+                         '<td>' + c.anotacion + '</td>' +
+                         '<td>' + c.resultado + '</td>' +
+                         '<td onclick="editar('+c.cedula+')" > <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-data" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/></svg> </td>' +
+                         '<td onclick="aprobar('+c.cedula+')" >   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/></svg></td>' +
+                         '<td onclick="rechazar('+c.cedula+')"  ><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-minus" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm-1 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/></svg> </td>' +
+                       '</tr>';
+     tbody.innerHTML += filaNueva;
+   });
+ }
+ rellenarTabla(obj);
+        
+        function aprobar(cedula){
+                     let obj2 =obj.campo.filter(r=>{
+                          if(cedula == r.cedula  ){
+                            r.anotacion ="Aprobado"
+                            return r
+                          }else{
+                              return r 
+                          }
+                      })
+                      var Table = document.getElementById("mTableBody");
+                       Table.innerHTML = ""
+                       obj.campo=[];
+                       obj.campo=obj2;
+                       rellenarTabla(obj);
+        }
+        function rechazar(cedula){
+                     let obj2 =obj.campo.filter(r=>{
+                          if(cedula == r.cedula  ){
+                            r.anotacion ="Rechazado"
+                            return r
+                          }else{
+                              return r 
+                          }
+                      })
+                      var Table = document.getElementById("mTableBody");
+                       Table.innerHTML = ""
+                       obj.campo=[];
+                       obj.campo=obj2;
+                       rellenarTabla(obj);
+        }
+     
+        function editar(datos){
+            obj.campo.forEach((c) => { 
+                   if(c.cedula==datos){
+                    var Cedula = document.getElementById("Cedula");
+                    var Fecha = document.getElementById("Fecha");
+                    var Hora = document.getElementById("Hora");
+                    Cedula.value=c.cedula;
+                    Fecha.value=c.fecha;
+                    Hora.value=c.fechac;
+                   }
+              });
+            }
+     
+     </script>
+</html>

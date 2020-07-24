@@ -1,0 +1,69 @@
+<html>
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script><link href=".7css7index.css" >
+            <link href="./css/index.css"  rel="stylesheet">
+            <script>
+                    (function() {
+                        alert("El login esta estatico \n Para entrar como administrador  ingrese cedula 0000000000 y \n Para ingresar como usuario ingrese con cualquier cedula \n La clave para ambos puede ser cualquiera  ")
+                     'use strict';
+                     window.addEventListener('load', function() {
+                     var forms = document.getElementsByClassName('needs-validation');
+                     var validation = Array.prototype.filter.call(forms, function(form) {
+                     form.addEventListener('submit', function(event) {
+                     if (form.checkValidity() === false) {
+                     event.preventDefault();
+                     event.stopPropagation();
+                     }else{
+                         if(form[0].value == "0000000000"){
+                           location.href="./view/admi_consultar.html";
+                         }else{
+                            location.href="./view/user_turno.html";
+
+                         }
+                      }                                    
+                     form.classList.add('was-validated');
+                     }, false);
+                     });
+                     }, false);
+                    })();
+            </script>
+    </head>
+
+    <body>
+            <div class="sidenav">
+                    <div class="login-main-text">
+                       <h2>Turnos en <br> Famacias</h2>
+                       <p>Inicia Sesion o Registrate.</p>
+                    </div>
+            </div>
+            <div class="main">
+                    <div class="col-md-6 col-sm-12">
+                       <div class="login-form">
+                          <form class="needs-validation" target="frame" novalidate>
+                             <div class="form-group">
+                                <label>Cedula</label>
+                                <input type="text" class="form-control" maxlength="10" minlength="10" pattern="[0-9]+" required placeholder="Cedula">
+                                <div class="invalid-tooltip">
+                                        Porfavor Ingrese una cedula , tiene que tener 10 caracteres y ser solo numero naturales.
+                                </div>
+                             </div>
+                             <div class="form-group">
+                                <label for="inputClave3"  >Clave</label>
+                                <input type="password" minlength="8"  class="form-control" required placeholder="Clave">
+                                <div class="invalid-tooltip">
+                                        Porfavor Ingrese una clave , tiene que tener minimo 8 caracteres.
+                                </div>
+                            </div>
+                             <button type="submit" class="btn btn-black">Ingresar</button>
+                             <a href="./view/registro.html" class="btn btn-secondary">Registrarse</a>
+
+                            </form>
+                          <iframe name="frame" style="display:none;"></iframe>
+                       </div>
+                    </div>
+            </div>
+    </body>    
+</html>

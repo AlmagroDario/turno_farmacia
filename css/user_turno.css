@@ -1,0 +1,101 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #eee;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 20%; 
+    }
+
+    .sidenav{
+        width: 20%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 50%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+
+.vertical-menu {
+    width: 100%;
+  }
+  
+  .vertical-menu a {
+    background-color: #eee; 
+    color: black; 
+    display: block;
+    padding: 12px; 
+    text-decoration: none; 
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc; 
+  }
+  
+  .vertical-menu a.active {
+    background-color: black ;
+    color: white;
+  }
+
+.form1{
+    width: 50%; 
+    margin-top: 5%;
+}
+.borderi{
+    border-top-left-radius: 15px;
+}
+.borderd{
+    border-top-right-radius: 15px;
+}
+
+.tr{
+    width: 20%;
+}

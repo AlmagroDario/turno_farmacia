@@ -1,0 +1,161 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script><link href=".7css7index.css" >
+      
+        <link href="../css/user_turno.css"  rel="stylesheet">
+
+        <script>
+                (function() {
+                 'use strict';
+                 window.addEventListener('load', function() {
+
+                 var forms = document.getElementsByClassName('needs-validation');
+                 var validation = Array.prototype.filter.call(forms, function(form) {
+                 form.addEventListener('submit', function(event) {
+                 if (form.checkValidity() === false) {
+                 event.preventDefault();
+                 event.stopPropagation();
+                 }else{
+                     let obj2 =obj.campo.filter(r=>{
+                        var mydate = new Date(form[0].value);
+                        var mydate3 = new Date(form[1].value);
+                        var mydate2 = new Date(r.fecha);
+                          if(mydate2 >= mydate && mydate2 <= mydate3  && form[2].value ==r.fechac ){
+                            return r
+                          }
+                      })
+                      var Table = document.getElementById("mTableBody");
+                       Table.innerHTML = ""
+                       obj.campo=[];
+                       obj.campo=obj2;
+                       rellenarTabla(obj);
+                 }
+                 form.classList.add('was-validated');
+                 }, false);
+                 });
+                 }, false);
+                })();
+           </script>
+    </head>
+
+    <body>
+            <div class="sidenav">
+                    <div class="vertical-menu">
+                            <a href="#"class="active" >Consultar Turnos</a>
+                            <a href="./admi_gestionar.html" >Gestionar Turnos</a>
+                            <a href="../index.html" >Salir</a>
+
+                     </div>
+            </div>
+            <div class="main">
+                    <nav class="navbar navbar-light bg-light">
+                            <span class="navbar-brand mb-0 h1">Consulta de Turnos</span>
+                    </nav>
+                    <div align="center" style="margin-top:5%;">
+                            <form class="needs-validation  "  style="width: 80%;"  target="frame" novalidate>
+                                    <div class="form-group row">
+                                        <label for="inputFecha3" class="col-sm-2 col-form-label">Fecha Desde</label>
+                                        <div class="col-sm-10">
+                                                <input type="date" class="form-control"    required>
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                                Porfavor seleccione una fecha valida .
+                                        </div>
+                                           
+                                    </div>
+                                    <div class="form-group row">
+                                            <label for="inputFecha3" class="col-sm-2 col-form-label">Fecha Hasta</label>
+                                            <div class="col-sm-10">
+                                                    <input type="date" class="form-control"    required>
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                    Porfavor seleccione una fecha valida .
+                                            </div>
+                                               
+                                        </div>
+                                    <div class="form-group row">
+                                            <label for="inputHora3" class="col-sm-2 col-form-label">Hora</label>
+                                            <div class="col-sm-10">
+                                                    <input type="time" class="form-control" min="09:00" max="21:00"    required>
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                    Porfavor seleccione una hora valida 9:00-21:00 .
+                                            </div>
+                                               
+                                    </div>
+                                <button class="btn btn-black" type="submit">Buscar</button>
+                            </form>
+                            <iframe name="frame" style="display:none;"></iframe>
+
+                            <table  style="width: 80%;" border="1">
+                                    <thead class="tituloCrear2b">
+                                        <tr>
+                                            <th class="borderi tr" id="fecha">Cedula</th>
+                                            <th id="hora" class="tr" >Correo</th>
+                                            <th class=" tr" id="fecha">Fecha</th>
+                                            <th id="hora" class="tr" >Hora</th>
+                                            <th class=" tr" id="detalle">Estado</th>  
+                                            <th class="borderi tr" id="detalle">Detalle</th>  										     										     
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mTableBody">
+        
+                                    </tbody>
+                             </table>        
+                    </div>  
+            </div>
+    </body>
+    <script>
+            let obj = {
+              campo: [
+         {
+             anotacion: "En espera",
+             fechat: "23/07/2020",
+             fechac: "9:00",
+             resultado: "detalle 2",
+             correo: "user@gmail.com",
+             resultado: "detalle 2",
+             cedula:"1234567891",
+             fecha:"2020-07-23"
+         },
+         {
+             anotacion: "Aprobado",
+             fechat: "24/07/2020",
+             fechac: "10:00",
+             resultado: "detalle 1",
+             correo: "user2@gmail.com",
+             cedula:"1234567890",
+             fecha:"2020-07-24"
+         },
+         {
+             anotacion: "Aprobado",
+             fechat: "25/07/2020",
+             correo: "user3@gmail.com",
+             fechac: "10:00",
+             resultado: "detalle 1",
+             cedula:"1234567892",
+             fecha:"2020-07-25"
+         }
+     ]
+            }
+ 
+ function rellenarTabla(obj) { 
+   let tbody = document.getElementById('mTableBody');
+   obj.campo.forEach((c) => { 
+       let filaNueva = '<tr>' +
+                         '<td>' + c.correo + '</td>' +
+                         '<td>' + c.cedula + '</td>' +
+                         '<td>' + c.fechat + '</td>' +
+                         '<td>' + c.fechac + '</td>' +
+                         '<td>' + c.resultado + '</td>' +
+                         '<td>' + c.anotacion + '</td>' +
+                       '</tr>';
+     tbody.innerHTML += filaNueva;
+   });
+ }
+ rellenarTabla(obj);
+         </script>
+</html>

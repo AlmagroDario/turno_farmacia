@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script><link href=".7css7index.css" >
+      
+        <link href="../css/user_turno.css"  rel="stylesheet">
+        <script>
+             (function() {
+              'use strict';
+              window.addEventListener('load', function() {
+                  alert("Cedula y Nombre automaticamente se llenaria por ahora esta estatico")
+              var forms = document.getElementsByClassName('needs-validation');
+              var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+              }else{
+                  alert("Solicitud enviada")
+              }
+              form.classList.add('was-validated');
+              }, false);
+              });
+              }, false);
+             })();
+        </script>
+    </head>
+
+    <body>
+            <div class="sidenav">
+                    <div class="vertical-menu">
+                            <a href="#" class="active">Solicitar Turnos</a>
+                            <a href="./user_retiro.html">Retiro de producto</a>
+                            <a href="./user_consulta.html" >Consulta de Turnos</a>
+                            <a href="../index.html" >Salir</a>
+
+                     </div>
+            </div>
+            <div class="main">
+                    <nav class="navbar navbar-light bg-light">
+                            <span class="navbar-brand mb-0 h1">Solicitar de Turnos</span>
+                    </nav>
+                    <div align="center">
+                            <form class="needs-validation form1" novalidate>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Cedula</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" value="0000000000" disabled placeholder="Usuario" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Usuario</label>
+                                        <div class="col-sm-10">
+                                             <input type="text" class="form-control" value="User" disabled placeholder="Usuario" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputFecha3" class="col-sm-2 col-form-label">Fecha</label>
+                                        <div class="col-sm-10">
+                                                <input type="date" class="form-control"    required>
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                                Porfavor seleccione una fecha valida .
+                                        </div>
+                                           
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                            <label for="inputHora3" class="col-sm-2 col-form-label">Hora</label>
+                                            <div class="col-sm-10">
+                                                    <input type="time" class="form-control" min="09:00" max="21:00"    required>
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                    Porfavor seleccione una hora valida 9:00-21:00 .
+                                            </div>
+                                               
+                                    </div>
+                                    <div class="form-group row">
+                                            <label for="inputDetalle3" class="col-sm-2 col-form-label">Detalle</label>
+                                            <div class="col-sm-10">
+                                                    <input type="text" class="form-control"   id="validationTooltip01"   required>
+                                                    <div class="invalid-tooltip">
+                                                            Porfavor Ingrese un detalle .
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                <button class="btn btn-black" type="submit">Solicitar</button>
+                            </form>
+
+                    </div>
+                    
+
+                    
+            </div>
+    </body>
+
+</html>
